@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>THE ANSWER TO ALL YOUR PROBLEMS</title>
+
+    <style>
+        body {
+            font-family: monospace;
+            background-color: black;
+            color: #00ff00;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        #bar-container {
+            width: 80%;
+            max-width: 500px;
+            margin: 20px auto;
+            border: 1px solid #00ff00;
+        }
+
+        #bar {
+            width: 0%;
+            height: 20px;
+            background-color: #00ff00;
+        }
+
+        #reveal, #answer {
+            display: none;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: black;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+        }
+
+        #terminal {
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>INITIALIZING SYSTEM...</h2>
+
+<div id="terminal"></div>
+
+<div id="bar-container">
+    <div id="bar"></div>
+</div>
+
+<div id="reveal">
+    <h1>RESULT FOUND</h1>
+    <button onclick="showAnswer()">REVEAL</button>
+</div>
+
+<div id="answer">
+    <h1>Find it yourself.</h1>
+</div>
+
+<script>
+    const terminal = document.getElementById("terminal");
+
+    const lines = [
+        "Connecting to global network...",
+        "Scanning 8,000,000,000 humans...",
+        "Accessing restricted databases...",
+        "Decrypting hidden knowledge...",
+        "Searching your browsing history...",
+        "ERROR: history too large...",
+        "Recalculating...",
+        "Finalizing answer..."
+    ];
+
+    let i = 0;
+
+    function typeLine() {
+        if (i < lines.length) {
+            terminal.innerHTML += lines[i] + "\n";
+            i++;
+            setTimeout(typeLine, 1200);
+        }
+    }
+
+    typeLine();
+
+    // loading bar (20 seconds)
+    let progress = 0;
+    const bar = document.getElementById("bar");
+
+    const interval = setInterval(() => {
+        progress++;
+        bar.style.width = progress + "%";
+
+        if (progress >= 100) {
+            clearInterval(interval);
+
+            document.getElementById("bar-container").style.display = "none";
+            document.getElementById("reveal").style.display = "block";
+        }
+    }, 200);
+
+    function showAnswer() {
+        document.getElementById("reveal").style.display = "none";
+        document.getElementById("answer").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
